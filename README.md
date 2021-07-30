@@ -3,7 +3,7 @@
 Pokedex made with React Native CLI, Hooks and 3 APIS.
 
 # Installation
-To install, make `git clone`, `npm istall` and `npm run android` (Only avaliable for android) 
+To install, make `git clone`, `npm install` and `npm run android` (Only avaliable for android) 
 
 # Apis used
 1. https://pokeapi.co/
