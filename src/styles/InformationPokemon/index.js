@@ -51,4 +51,8 @@ export const styles = StyleSheet.create({
   secondColumnBreeding: {
     marginLeft: '12%',
   },
+  
+  textCapitalize: {
+    textTransform: 'capitalize',
+  },
 });

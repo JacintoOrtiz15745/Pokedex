@@ -53,7 +53,4 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: 'red',
   },
-  textCapitalize: {
-    textTransform: 'capitalize',
-  },
 });

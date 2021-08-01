@@ -16,12 +16,23 @@ export default ({navigation}) => {
   const [loading, setLoading] = useState(true);
 
   const fetchPokemons = async () => {
-    const response = await fetch(
-      'https://pokeapi.co/api/v2/pokemon?offset=0&limit=30',
-    );
-    const data = await response.json();
-    setPokemons(data.results);
-    setLoading(false);
+    const aborCont = new AbortController();
+    try {
+      const response = await fetch(
+        'https://pokeapi.co/api/v2/pokemon?offset=0&limit=30',
+        {signal: aborCont.signal},
+      );
+      const data = await response.json();
+      setPokemons(data.results);
+      setLoading(false);
+    } catch (error) {
+      if (error.name === 'AbortError') {
+        console.log('fetch aborted');
+      } else {
+        console.log(error);
+      }
+    }
+    return () => aborCont.abort();
   };
 
   useEffect(() => {
