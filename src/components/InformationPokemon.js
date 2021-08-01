@@ -1,36 +1,19 @@
 import React from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import {styles} from '../styles/InformationPokemon';
-import {text,description} from '../utils/constants/text';
+import {text, description} from '../utils/constants/text';
 
 const InformationPokemon = props => {
   const {
-    name,
+    pokemon,
     number,
-    type,
-    about,
-    species,
-    height,
-    weight,
-    abilities,
-    evYield,
-    catchRateValue,
-    catchRateText,
-    baseFriendshipValue,
-    baseFriendshipText,
-    baseExp,
-    growthRate,
-    genderMale,
-    genderFemale,
-    eggGroup,
-    eggCycles,
-    eggCyclesSteps,
+    details,
   } = props;
 
   return (
     <View style={styles.mainContainer}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Text style={styles.about}>{about}</Text>
+      <ScrollView showsVerticalScrollIndicator={false}> 
+        <Text style={styles.about}>{pokemon[number].description}</Text>
 
         <Text style={styles.title}>{description.pokedex}</Text>
 
@@ -42,10 +25,20 @@ const InformationPokemon = props => {
             <Text style={styles.titleInfo}>{description.abilities}</Text>
           </View>
           <View style={styles.secondColumnPokedex}>
-            <Text style={styles.descriptionInfo}>{species}</Text>
-            <Text style={styles.descriptionInfo}>{height}</Text>
-            <Text style={styles.descriptionInfo}>{weight}</Text>
-            <Text style={styles.descriptionInfo}>{abilities}</Text>
+            <Text style={styles.descriptionInfo}>
+              {pokemon[number].species}
+            </Text>
+            <Text style={styles.descriptionInfo}>{pokemon[number].height}</Text>
+            <Text style={styles.descriptionInfo}>{pokemon[number].weight}</Text>
+            <Text style={styles.descriptionInfo}>
+              {details.abilities.map((ability, index) => {
+                return (
+                  <Text key={index} style={styles.textCapitalize}>
+                    {ability.ability.name}{' '}
+                  </Text>
+                );
+              })}
+            </Text>
           </View>
         </View>
 
@@ -60,15 +53,23 @@ const InformationPokemon = props => {
             <Text style={styles.titleInfo}>{description.growthRate}</Text>
           </View>
           <View style={styles.secondColumnTraining}>
-            <Text style={styles.descriptionInfo}>{evYield}</Text>
             <Text style={styles.descriptionInfo}>
-              {catchRateValue} ({catchRateText})
+              {pokemon[number].training.evYield}
             </Text>
             <Text style={styles.descriptionInfo}>
-              {baseFriendshipValue} {baseFriendshipText}
+              {pokemon[number].training.catchRate.value} (
+              {pokemon[number].training.catchRate.text})
             </Text>
-            <Text style={styles.descriptionInfo}>{baseExp}</Text>
-            <Text style={styles.descriptionInfo}>{growthRate}</Text>
+            <Text style={styles.descriptionInfo}>
+              {pokemon[number].training.baseFriendship.value}{' '}
+              {pokemon[number].training.baseFriendship.text}
+            </Text>
+            <Text style={styles.descriptionInfo}>
+              {pokemon[number].training.baseExp}
+            </Text>
+            <Text style={styles.descriptionInfo}>
+              {pokemon[number].training.growthRate}
+            </Text>
           </View>
         </View>
 
@@ -82,11 +83,25 @@ const InformationPokemon = props => {
           </View>
           <View style={styles.secondColumnBreeding}>
             <Text style={styles.descriptionInfo}>
-              {text.male}{genderMale}{text.percentage}{'   '}{text.female}{genderFemale}{text.percentage} 
+              {text.male}
+              {pokemon[number].breedings.gender.male}
+              {text.percentage}
+              {'   '}
+              {text.female}
+              {pokemon[number].breedings.gender.female}
+              {text.percentage}
             </Text>
-            <Text style={styles.descriptionInfo}>{eggGroup}</Text>
             <Text style={styles.descriptionInfo}>
-              {eggCycles} ({eggCyclesSteps})
+              {pokemon[number].breedings.eggGroups.map((eggs, index) => {
+                return (
+                  <Text key={index} style={styles.textCapitalize}>
+                    {eggs}{' '}
+                  </Text>
+                );
+              })}
+            </Text>
+            <Text style={styles.descriptionInfo}>
+              {pokemon[number].breedings.eggCycles.value} ({pokemon[number].breedings.eggCycles.text})
             </Text>
           </View>
         </View>
