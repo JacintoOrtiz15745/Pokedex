@@ -9,7 +9,7 @@ const InformationPokemon = props => {
     number,
     details,
   } = props;
-
+  console.log()
   return (
     <View style={styles.mainContainer}>
       <ScrollView showsVerticalScrollIndicator={false}> 
@@ -19,26 +19,16 @@ const InformationPokemon = props => {
 
         <View style={styles.tableContainer}>
           <View>
-            <Text style={styles.titleInfo}>{description.species}</Text>
+            <Text style={styles.titleInfo}>{description.species}</Text> 
             <Text style={styles.titleInfo}>{description.height}</Text>
-            <Text style={styles.titleInfo}>{description.weight}</Text>
-            <Text style={styles.titleInfo}>{description.abilities}</Text>
+            <Text style={styles.titleInfo}>{description.weight}</Text> 
           </View>
           <View style={styles.secondColumnPokedex}>
             <Text style={styles.descriptionInfo}>
               {pokemon[number].species}
-            </Text>
+            </Text> 
             <Text style={styles.descriptionInfo}>{pokemon[number].height}</Text>
-            <Text style={styles.descriptionInfo}>{pokemon[number].weight}</Text>
-            <Text style={styles.descriptionInfo}>
-              {details.abilities.map((ability, index) => {
-                return (
-                  <Text key={index} style={styles.textCapitalize}>
-                    {ability.ability.name}{' '}
-                  </Text>
-                );
-              })}
-            </Text>
+            <Text style={styles.descriptionInfo}>{pokemon[number].weight}</Text> 
           </View>
         </View>
 

@@ -22,7 +22,7 @@ const Details = ({route, navigation}) => {
   const imageUrl =
     'https://pokeres.bastionbot.org/images/pokemon/' + details.id + '.png';
 
-  const fetchPokemonDetails = async () => {
+    const fetchPokemonDetails = async () => {
     const aborCont = new AbortController();
     try {
       const response = await fetch(url, {signal: aborCont.signal});
@@ -55,12 +55,24 @@ const Details = ({route, navigation}) => {
         console.log(error);
       }
     }
+    return () => aborContTwo.abort();
+
   };
 
   useEffect(() => {
     fetchPokemonDetails();
     fetchPokemon();
   }, []);
+  let typePokemon = pokemon.types 
+
+  switch (typePokemon) {
+    case 'grass':
+      return console.log('asa')
+      break;
+  
+    default:
+      break;
+  }
 
   return (
     <View>
@@ -72,7 +84,9 @@ const Details = ({route, navigation}) => {
             <View style={styles.back}>
               <TouchableOpacity onPress={() => navigation.navigate('Pokemons')}>
                 <Image
-                  source={require('../assets/patterns/leftArrow.png')}></Image>
+                  source={require('../assets/patterns/leftArrow.png')}
+                  style={styles.iconBack}
+                  ></Image>
               </TouchableOpacity>
             </View>
             <View style={styles.containerImageBackground}>
@@ -89,6 +103,7 @@ const Details = ({route, navigation}) => {
           </View>
 
           <View style={styles.downContainer}>
+            
             <InformationPokemon
               pokemon={pokemon}
               number={number}

@@ -52,7 +52,7 @@ export default ({navigation}) => {
             data={pokemons}
             keyExtractor={pokemon => pokemon.name}
             contentContainerStyle={{flexGrow: 1}}
-            showsVerticalScrollIndicator={false}
+            showsVerticalScrollIndicator={false} 
             renderItem={({item}) => (
               <PokemonItem
                 onPress={() => navigation.navigate('Details', item.url)}

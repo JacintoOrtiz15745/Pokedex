@@ -1,12 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
+export const styles = StyleSheet.create({ 
   list: {
     alignSelf: 'stretch',
   },
