@@ -12,6 +12,7 @@ export const text = {
 export const description = {
   pokedex: 'Pokedex Data',
   species: 'Species',
+  type: 'Type',
   height: 'Height',
   weight: 'Weight',
   abilities: 'Abilities',

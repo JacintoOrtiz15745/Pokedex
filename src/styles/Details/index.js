@@ -31,7 +31,11 @@ export const styles = StyleSheet.create({
   },
   back: {
     position: 'absolute',
-    padding: 42,
+    padding: 35,
+  },
+  iconBack:{
+    height: 21,
+    width: 21,
   },
   containerImageBackground: {
     position: 'absolute',
